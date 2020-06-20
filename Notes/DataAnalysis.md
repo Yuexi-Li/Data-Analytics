@@ -1,5 +1,13 @@
 # Data Analysis Process
+## Outline 
+<ul>
+<li><a href="#L2">Data Analysis Process Overview</a></li>
+<li><a href="#L3">Data Wrangling</a></li>
+<li><a href="#L4">EDA</a></li>
+</ul>
 
+****
+<a id='L2'></a>
 ### Data Analysis Process Overview
 <details> 
 <summary> Data Analysis Process </summary>
@@ -21,7 +29,7 @@ Step 5: Communicate your results
 You often need to justify and convey meaning in the insights you’ve found. Or, if your end goal is to build a system, you usually need to share what you’ve built, explain how you reached design decisions, and report how well it performs. There are many ways to communicate your results: reports, slide decks, blog posts, emails, presentations, or even conversations. Data visualization will always be very valuable.
 </details>
 
-## Categlog 
+<a id='L3'></a>
 ### Data Wrangling: 
 #### 1. Gather Data
 `label`  to change the column name 
@@ -61,8 +69,10 @@ number of col have missing value `df.isnull().any(axis = 0).sum()`
    ```
     - drop missing records
       `df.drop(['col','col'], axis = 1, inplace = True)`  
-      **drop rows** with NA `df.dropna(axis = 0, inplace = True)`
-      **drop cols** with NA `df.dropna(axis = 1, inplace = True)`
+      **drop rows** with NA `df.dropna(axis = 0, inplace = True)`  
+      or drop row with idx `df.drop((df.query('age == -1')).index[0])`
+      **drop cols** with NA `df.dropna(axis = 1, inplace = True)` 
+    
 * **duplicates** 
 `df.duplicated()` gives boolean result 
 `sum(df.duplicates())` gives the number of duplicates records 
@@ -76,6 +86,7 @@ number of col have missing value `df.isnull().any(axis = 0).sum()`
   - select condition 
   `df.query('col in ["val1", "vla2"]')`
 
+<a id='L4'></a>
 ### EDA (Explore and Augment)
 #### Visualizations
 * **descriptive**
@@ -99,3 +110,11 @@ number of col have missing value `df.isnull().any(axis = 0).sum()`
   plt.xlabel('Some X Label')
   plt.ylabel('Some Y Label');
   ```
+* **Correlation Matrix** 
+  ```
+  corrMatrix = df.loc[:,['col','col2']].corr()
+  sns.heatmap(corrMatrix, annot = True)
+  plt.show()
+  ``` 
+* **Charts selection** 
+  ![Chart](Pics/new_chart.jpeg) 
