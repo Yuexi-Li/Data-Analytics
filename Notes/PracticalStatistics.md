@@ -3,7 +3,7 @@
 <ul>
 <li><a href="#L1">Descriptive Statistics</a></li>
 <li><a href="#L2">Probability</a></li>
-<li><a href="#L3">Probability</a></li>
+<li><a href="#L3">Practical Statistics</a></li>
 
 ****
 
@@ -11,8 +11,8 @@
 ## Descriptive Statistics
 Descriptive Statistics is about describing our collected data. 
 - mindmap as below ([Link](Notes/MindMap/t1_descriptvie_statictics.html)) 
+<img src="Pics/mindmap_descriptive_statistics.jpeg" alt="drawing" width="1000"/>
 
-![mindmap_descriptive](Pics/mindmap_descriptive_statistics.jpeg)
 ****
 
 <a id='L2'></a>
@@ -32,4 +32,11 @@ Descriptive Statistics is about describing our collected data.
 
 ****
 <a id='L3'></a>
-## 
+## Practical Statistics 
+
+**Additional**
+- notation 
+  <img src="Pics/notation_population_sample.png" alt="drawing" width="200"/>
+- **Margin of error**: half the confidence interval width ( for example CI(31,37) then MOE = 3)
+- increase sample size -> decrease the width of CI 
+  increase confidence level -> increase the width of CI
