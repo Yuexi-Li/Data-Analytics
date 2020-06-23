@@ -1,4 +1,4 @@
-# Practical Statistics 
+
 ## Inferential Statistics 
 - using collected data to draw conclusions to larger population 
 - **Population**: entire group of interest 
@@ -9,8 +9,7 @@
 ### Sampling Dist.
 - Dist. of statistic 
 ### Central Limit Theorem
-- **DEFI**: with a large enough sample size the sampling 
-dist. of the mean will be normally distributed.
+
 - **Applies**
   `\(\bar x, p, (\bar x_1 - \bar x_2), (p1-p2) \)`
 - **Not apply**
@@ -22,19 +21,5 @@ dist. of the mean will be normally distributed.
   `random forest, stochastic gradient boosting`
 
 ## Confidence Intervals 
-- Interpretation:
-We are 95% confident, the population mean falls between the bounds we find.  
+- Interpretation (Note)
 - `np.percentile(object, %)`
-- Statistical vs Practical Significance  
-
-## 3h Hypothesis Testing 
-
-## 4h A/B testing
-
-## Application 
-
-## 3.2h Linear Regression 
-
-## 3.2h Multiple Linear Regression 
-
-## 1h Logistic Regression 
