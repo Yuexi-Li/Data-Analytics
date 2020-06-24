@@ -5,6 +5,8 @@
 <li><a href="#L2">Probability</a></li>
 <li><a href="#L3">Practical Statistics</a></li>
 <li><a href="#L4">Hypothesis Testing</a></li>
+<li><a href="#L5">A/B Testing</a></li>
+
 </ul>
 
 ****
@@ -12,14 +14,14 @@
 <a id='L1'></a>
 ## Descriptive Statistics
 Descriptive Statistics is about describing our collected data. 
-- mindmap as below ([Link](Notes/MindMap/t1_descriptvie_statictics.html)) 
+- mindmap as below ([Link](Notes/../MindMap/t1_descriptvie_statictics.html)) 
 <img src="Pics/mindmap_descriptive_statistics.jpeg" alt="drawing" width="1000"/>
 
 ****
 
 <a id='L2'></a>
 ## Probability
-- mindmap as below ([Link](Notes/MindMap/t2_probability.html)) 
+- mindmap as below ([Link](Notes/../MindMap/t2_probability.html)) 
 ![mindmap_probability](Pics/mindmap_probability.png)
 
 **Additional**
@@ -178,5 +180,35 @@ table {
 &emsp;&emsp;**$pval>α⇒$ Fail to Reject $H_0$** do not have statistically significant evidence to sugguest...
 [notebook](PvalueCalculation.html)
 
-- **Other Consideration**
+****
+<a id='L5'></a>
+## A/B Testing 
+* **Hypothesis**
+  $H_0$: experiment does not equally or worse than the control
+  $H_a$: experiment does better than the control
+* **Drawbacks**
+    - can only compare two options, but not option havent considered
+    - can produce bias results 
+      - Change aversion
+        >   Existing users may give an unfair advantage to the old version, simply because they are unhappy with change, even if it’s ultimately for the better.
+      - novelty effect
+        >    Existing users may give an unfair advantage to the new version, because they’re excited or drawn to the change, even if it isn’t any better in the long run.
+* **Other considerations**
+  - Novelty effect and change aversion when existing users first experience a change
+  - Sufficient traffic and conversions to have significant and repeatable results
+  - Best metric choice for making the ultimate decision (eg. measuring revenue vs. clicks)
+  - Long enough run time for the experiment to account for changes in behavior based on time of day/week or seasonal events.
+  - Practical significance of a conversion rate (the cost of launching a new feature vs. the gain from the increase in conversion)
+  - Consistency among test subjects in the control and experiment group (imbalance in the population represented in each group can lead to situations like Simpson's Paradox)
+### AB testing case study 
+Review ( compare proportion: [wookbook](ABtest_case1.html), [explaination](https://www.youtube.com/watch?time_continue=129&v=EpfoKAwV_Eg&feature=emb_logo) ;
+&emsp;&emsp; &emsp; &emsp;compare difference in mean: [wookbook](ABtest_case2.html),[explaination](https://www.youtube.com/watch?time_continue=2&v=w6Y9ZxHDEbw&feature=emb_logo))
+
+Steps:
+1. We computed the observed difference between the metric, average reading duration, for the control and experiment group.
+2. We simulated the sampling distribution for the difference in means (or average reading durations).
+3. We used this sampling distribution to simulate the distribution under the null hypothesis, by creating a random normal distribution centered at 0 with the same spread and size.
+4. We computed the p-value by finding the proportion of values in the null distribution that were greater than our observed difference.
+5. We used this p-value to determine the statistical significance of our observed difference.
+
 
