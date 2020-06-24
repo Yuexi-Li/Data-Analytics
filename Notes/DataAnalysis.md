@@ -29,17 +29,79 @@ Step 5: Communicate your results
 You often need to justify and convey meaning in the insights you’ve found. Or, if your end goal is to build a system, you usually need to share what you’ve built, explain how you reached design decisions, and report how well it performs. There are many ways to communicate your results: reports, slide decks, blog posts, emails, presentations, or even conversations. Data visualization will always be very valuable.
 </details>
 
+
 <a id='L3'></a>
+
 ### Data Wrangling: 
 #### 1. Gather Data
+* **Read**
 `label`  to change the column name 
 `header` if 0 then the frist line of the data; None then nothing; 1 is the second line of the data
 `index` False to ingnore the index
 `sep` sepecify the delimiter
-```
-labels = ['col1', 'col2', 'col3']  
-df = pd.read_csv('data.csv', names=labels, index = False)   
-```
+  ```
+  labels = ['col1', 'col2', 'col3']  
+  df = pd.read_csv('data.csv', names=labels, index = False)   
+  ```
+* **unzip**
+  ```
+  import zipfile  
+  with ZipFile('file.zip', 'r') as myzip:    
+        myzip.extractall()
+  ```
+
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Section</th>
+    <th>parameter</th>
+    <th>Functions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td colspan="2">Unzip File</td>
+    <td>file<br>mode = 'r' or 'w'</td>
+       <td><pre><code>import zipfile </br> 
+with ZipFile('file.zip', 'r') as myzip:    
+<br>    myzip.extractall()<br></code></td>
+  </tr>
+  <tr>
+    <td rowspan="4">Read</td>
+    <td><code>label<code></td>
+    <td>change column name</td>
+    <td rowspan="4"><code>labels = ['col1', 'col2', 'col3']  <br>df = pd.read_csv('data.csv', names=labels, index = False)</td>
+  </tr>
+  <tr>
+    <td><code>header<code></td>
+    <td>default 0 (first line of the data)<br>1 is the second line of data</td>
+  </tr>
+  <tr>
+    <td><code>index<code></td>
+    <td>False -&gt; ignore the index</td>
+  </tr>
+  <tr>
+    <td><code>sep<code></td>
+    <td>delimiter</td>
+  </tr>
+</tbody>
+</table> 
+<table>
+<thead>
+  <tr>
+    <th>Section</th>
+    <th>Functions</th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>unzip file </td>
+
+
+
+
 #### 2.  Access and Build Intuition
 * **basic funtions**  &emsp;   `shape` | `dtypes` | `describe` | `info` | `unique`
 * **reassign column name** 
@@ -53,7 +115,18 @@ df = pd.read_csv('data.csv', names=labels, index = False)
   - check two dataframe's columns if identical 
   `(df.columns == df2.columns).all()`
 
+
 #### 3. Clean Data
+**Stpes** 
+1. Define: convert assessment into defined cleaning tasks 
+2. Code: convert definition to code
+3. Test: test the dataset (like using assert statement)
+    * **assert**
+   check if every text in a `asap_list` is in `df.startDate.values`
+   ```
+   for phrase in asap_list:
+      assert phrase not in df.startDate.values
+   ```
 * **incorrect data types**
 `df['timestamp'] = pd.to_datetime(df['timestamp']) `
 `df[col] = df[col].astype(str/int/float)`
@@ -87,6 +160,7 @@ number of col have missing value `df.isnull().any(axis = 0).sum()`
   `df.query('col in ["val1", "vla2"]')`
 
 <a id='L4'></a>
+
 ### EDA (Explore and Augment)
 #### Visualizations
 * **descriptive**
