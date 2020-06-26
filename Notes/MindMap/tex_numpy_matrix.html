@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@5"></script><script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.11/dist/browser/view.min.js"></script><script>((t,a,e,n)=>{const{Markmap:o,loadPlugins:s}=window.markmap;(a?a(s,e,n):Promise.resolve()).then(()=>{o.create("svg#mindmap",null,t)})})({"t":"heading","d":1,"v":"matrix math numpy","c":[{"t":"heading","d":2,"v":"datatypes","c":[{"t":"list_item","d":3,"v":"scaler<br/><code>s= np.array(5)</code>"},{"t":"list_item","d":3,"v":"vector<br/><code>v = np.array([1,2,3])</code>"},{"t":"list_item","d":3,"v":"matrix<br/><code>m = np.array([[1,2,3], [4,5,6], [7,8,9]])</code>"},{"t":"list_item","d":3,"v":"tensor<br/><code>t = np.array([m,s,v])</code>"}]},{"t":"heading","d":2,"v":"shape","c":[{"t":"list_item","d":3,"v":"shape<br/><code>v.shape</code>"},{"t":"list_item","d":3,"v":"reshape<br/><code>v.reshape(1,4)</code>"}]},{"t":"heading","d":2,"v":"calculation","c":[{"t":"heading","d":3,"v":"element wise operation","c":[{"t":"list_item","d":4,"v":"requied matrices to be same size"},{"t":"list_item","d":4,"v":"<code>np.multiple(m,n)</code> or <code>m * n</code>"}]},{"t":"heading","d":3,"v":"matrix product","c":[{"t":"list_item","d":4,"v":"required size<code>\\((m,n) * (n, p)\\)</code>"},{"t":"list_item","d":4,"v":"<code>np.matmul(a, b)</code>"},{"t":"list_item","d":4,"v":"if the matrices are two dimensional<br/><code>dot</code> function  are the same<br/><code>np.dot(a,a)</code>"}]},{"t":"heading","d":3,"v":"matrix transpose","c":[{"t":"list_item","d":4,"v":"turn <code>(m,n)</code> to <code>(m,n)</code>"},{"t":"list_item","d":4,"v":"<code>n.T</code>"}]}]}]},(t,a,e)=>t(a,e),["mathJax"],{"mathJax":true,"prism":false})</script>
+</body>
+</html>
