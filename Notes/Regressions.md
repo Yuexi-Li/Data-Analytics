@@ -4,7 +4,13 @@
 <li><a href="#L1">Regression</a></li>
 <li><a href="#L2">Multilinear Regression</a></li>
 <li><a href="#L3">Logistic Regression</a></li>
+<li><a href="#extra">Additional</a></li>
+    <ul>
+    <li><a href="#Lextra">Matrix and Numpy refresher</a></li>
+    <li><a href="#Lextra2">Model assumptions and issues</a></li>
+    </ul>
 </ul>
+
 
 ****
 
@@ -67,8 +73,178 @@ Interpretation ([v1](https://www.youtube.com/watch?time_continue=13&v=eLk0XGGMaC
 
 <a id='L2'></a>
 ## Multilinear Regression
+<img src="Notes/../Pics/mindmap_MLR_regression.png">
+Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
 
+* **Build models**
+  * through aclculation of matrix by the formular [in numpy](https://www.youtube.com/watch?time_continue=197&v=bvM6eUYyurA&feature=emb_logo)
+    $\beta = (X^′X) ^−1X ^′y$  
+    ```
+    X= df [['intercept', x1, x2, x3]]
+    Y = df.price
+    np.dot(np.dot(np.linalg.inv(np.dot(X.transpose(), X)), X.transpose()),y)
+    ```
+
+* **Dummy variables**
+  - the way to add `categorical` variables to multiple linear regression model by 1,0 encoding, must drop one of the column (the column dropped called `baseline`).
+  **reason:**
+    1. to assure that all of the columns are linearly independent 
+    2. assure that the dot product of $X^′X$ is invertible  
+    3. assure the X natrix is [full rank](https://www.cds.caltech.edu/~murray/amwiki/index.php/FAQ:_What_does_it_mean_for_a_non-square_matrix_to_be_full_rank%3F)
+  -  Encoding 
+     Create and need to Drop 
+    `pd.get_dummies(df[categorical_var])`
+     
+* **Interpretation** ([v1](https://www.youtube.com/watch?time_continue=34&v=qRD3OVX8UMM&feature=emb_logo),[v2](https://www.youtube.com/watch?time_continue=159&v=TxP_TD0kbOo&feature=emb_logo))
+<img src = "Notes/../Pics/MLR_results.png" >
+* **coef:**  
+  - Quantitative  
+   For every one unit increase in X, the expected Y increases by the `slope`, holding all else constant. 
+     > e.g. for ever additional unit increase in area of the house, the price is expected to increaase by 348.5 **as long as the other variables stay the same**.
+  - Categorical 
+    > We expect that a house in neighborhood C will cost 7168 less than a neighborhood A house, all else being equal.
+
+* **<a href="#Lextra2">Potential Problems</a>**
+  1. Linear relationship doesnt exists 
+  2. Correlated errors 
+  3. Non constant variance
+  4. Outliers hurt the model 
+  5. Multicollinearity
+
+* **Multicollinearity Problem** 
+  *Details described in addition table*
+  - **Consequences:** direction flipped coefficients 
+  - Scatterplot Matrix
+    ```
+    import searborn as sb
+    sb.pairplot(df[['var1','var2','var3']])
+    ``` 
+  - **VIFs** [(Variance Inflation Factors)](https://etav.github.io/python/vif_factor_python.html)
+    
+    * **Calculation:**
+      $VIF_i = \frac{1}{1- R_i^2}$
+      - [Logic](https://www.youtube.com/watch?v=uiF3UcDWwPI&feature=emb_logo) 
+       All other x-variables - excluding $x_i$ -> are used to predict $x_i$ then compute $R_i^2$
+       if one related to other: 
+       $R_i^2$ \(\uparrow\) then $1- R_i^2$\(\downarrow\) \(\therefore\)  VIFs \(\uparrow\)
+
+    * **Code**: 
+      if VIF> 10 then we have multicollinearity in model 
+
+      ```
+      from pasty import dmatrices
+      from statsmodels.stats.outliers_influence import 
+      
+      variance_inflation_factor 
+      y,X = dmatrices('price ~ intercept + area +bedrooms + bathrooms', df, return_type ='dataframe')
+
+      vif = pd.DataFrame()
+      vif["VIF factor"] = [variance_inflation_factor(X.values,i) for i in range(X.shape[1])]
+      vif["features"] = X.columns
+      vif
+      ```
+      and remove either with VIFs > 10 
+
+* **Higher order terms**
+  - **Why:** To help fit more complex relationship in data. 
+  - **How:** Multiplying two or more x-variables by one another. Common higher order terms include:
+    1. Multipled by itself: <ins>quadratics $(x_1^2)$ and cubics $(x_1^3)$  
+    2. [interactions:](https://www.youtube.com/watch?time_continue=1&v=XV6S2srsdxw&feature=emb_logo) $(x_1 x_2)$
+   - **When:** by the curves in the relatipnships between the y and x variable 
+   - **Notice!!!**: we can not interprete the linear term the same way as before, becuase the variable is involved in the higher order term as well as the linear term
+  <table>
+<thead>
+  <tr>
+    <th>Add</th>
+    <th>Curve</th>
+  
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>quadratic</td>
+    <td><img src="Notes/../Pics/high_order_quardratic.png" alt="Image" width="300" height="200"></td>
+  </tr>
+  <tr>
+    <td>cubic</td>
+    <td><img src="Notes/../Pics/high_order_cubic.jpg" width="300" height="200"></td>
+  </tr>
+  <tr>
+    <td>interaction</td>
+    <td><img src="Notes/../Pics/high_order_terms.png" width="300" height="200">
+    <a href ="https://www.youtube.com/watch?v=uiF3UcDWwPI&feature=emb_logo">when use</a>: lines even cross or grow apart quickly.</td>
+  </tr>
+</tbody>
+</table>
+   
 ****
 
 <a id='L3'></a>
 ## Logistic Regression
+
+
+
+****
+<a id='extra'></a>
+## Additional 
+
+<a id='Lextra'></a>
+### 1. Matrix and Numpy refresher
+
+<img src ="Notes/../Pics/numpy_matrix.png" size=800> 
+
+
+
+
+<a id='Lextra2'></a>
+### 2. Model Assumptions 
+
+<table>
+<thead>
+  <tr>
+    <th>Potential Problems</th>
+    <th>Error</th>
+    <th>Assess Methods<br></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="2">1. Non-linearity of the y and x </td>
+    <td>- Linearity is that a linear model is the relationship that truly exists between the y variable and x variables. <br><span style="font-weight:bold">- Consequences: </span> <br>1. the predictions will not be very accurate <br> 2. the linear relationships associated with the coefficients aren't useful  </td>
+    <td><span style="font-weight:bold;color:#00009B">a plot of residuals</span>  by the predicted values <code>(y−ŷ)</code>by predicted ŷ. <br>
+    <li>curvature patterns : linear model might not fit (biased) <li>Expcted: random scatter</td>
+  <tr>
+    <td colspan="2">
+    <img src ="Notes/../Pics/resid-plots.gif" style="height:65%;"></td>
+  </tr>
+  </tr>
+  <tr>
+    <td>2. Correlation of error terms</td>
+    <td><span style="font-weight:bold">- Description:</span> <br>Correlated errors frequently occur when our data are collected over time (like in forecasting stock prices or interest rates in the future) or data are spatially related (like predicting flood or drought regions).<br>We can often improve our predictions by using information from the past data points (for time) or the points nearby (for space).<br>
+    <span style="font-weight:bold"> - Root Cause: </span> <br>not accounting for correlated errors is that you can often use this correlation to your advantage to better predict future events or events spatially close to one another. </td>
+    <td><li><span style="font-weight:bold;color:#00009B">Durbin-Waston:</span> used to assess whether correlation of the errors is an issue </li>
+    <li> <span style="font-weight:bold;color:#00009B">ARIMA or ARMA moels</span> : impleted to use this correlation to make better predictions</td>
+  </tr>
+  <tr>
+    <td>3. Non-constant Variance and Normally Distributed Errors</td>
+    <td><span style="font-weight:bold">- Description:</span><br> Non-constant variance is when the spread of your predicted values differs depending on which value you are trying to predict. This isn't a huge problem in terms of predicting well. <br><span style="font-weight:bold"> - Consequences: </span> <br>it does lead to confidence intervals and p-values that are inaccurate. Confidence intervals for the coefficients will be too wide for areas where the actual values are closer to the predicted values, but too narrow for areas where the actual values are more spread out from the predicted values. </td>
+    <td><span style="font-weight:bold">- Test residuals plot:</span><br>
+    <li> non-constant variance: is labeled as heteroscedastic <li>
+    constnat variance: homoscedastic residuals (consistent across the range of values) <br>
+    <span style="font-weight:bold;color:#00009B">Fix: a log </span>(or some other transformation of the response variable is done) in order to "get rid" of the non-constant variance. In order to choose the transformation, a <a href ="https://www.statisticshowto.com/box-cox-transformation/"> Box-Cox</a> is commonly used.<br>
+</td>
+  </tr>
+  <tr>
+    <td>4. Outliers/Leverage points</td>
+    <td>Outerliner: points that lie far away from the regular trends of the data. <br><span style="font-weight:bold"> - Consequences: </span> <br>If we are aggregating data from multiple sources, its possible that some of the data values were carried over incorrectly or aggregated incorrectly. </td>
+    <td><span style="font-weight:bold;color:#00009B">Regularization</span></td>
+  </tr>
+  <tr>
+    <td>5. Multicollinearity</td>
+    <td><span style="font-weight:bold">- Description:</span><br> when we have x variables are correlated with one another. <br><span style="font-weight:bold"> - Consequences: </span> <br>One of the main concern of multicollinearity is that it can lead to coefficients being flipped from the direction we expected from simple linear regression</td>
+    <td><span style="font-weight:bold;color:#00009B">Bivariate plots</span> or <span style="font-weight:bold;color:#00009B">Variance inflation factor <a href ="https://www.youtube.com/watch?time_continue=15&v=wbtrXMusDe8&feature=emb_logo"> (review: VIF</a><a href ="https://www.youtube.com/watch?time_continue=15&v=wbtrXMusDe8&feature=emb_logo">, 2)</a></span>  if VIF> 10 then we have multicollinearity </td>
+  </tr>
+</tbody>
+</table>
+
+*VIF $VIF_i = \frac{1}{1- R_i^2}$
