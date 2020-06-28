@@ -8,6 +8,7 @@
     <ul>
     <li><a href="#Lextra">Matrix and Numpy refresher</a></li>
     <li><a href="#Lextra2">Model assumptions and issues</a></li>
+    <li><a href="#Lextra3">Confusion Matrix</a></li>
     </ul>
 </ul>
 
@@ -152,12 +153,11 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
     2. [interactions:](https://www.youtube.com/watch?time_continue=1&v=XV6S2srsdxw&feature=emb_logo) $(x_1 x_2)$
    - **When:** by the curves in the relatipnships between the y and x variable 
    - **Notice!!!**: we can not interprete the linear term the same way as before, becuase the variable is involved in the higher order term as well as the linear term
-  <table>
+<table>
 <thead>
   <tr>
     <th>Add</th>
     <th>Curve</th>
-  
   </tr>
 </thead>
 <tbody>
@@ -181,8 +181,32 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
 
 <a id='L3'></a>
 ## Logistic Regression
+* **Basics** 
+  used to predict only two possible outcomes 
+* **Odds ratio** 
+  $log(\frac{p}{1-p}) = b_0 +b_1x_1+ b_2x_2 +...$
+  $\downarrow$
+  $\displaystyle p= \frac{e^{b_0 +b_1x_1+ b_2x_2 +...}}{1+e^{b_0 +b_1x_1+ b_2x_2 +...}}$
+  ($p:$ probability of category 1 occuring)
+* **Interpretation:** ([v1](https://www.youtube.com/watch?time_continue=11&v=UPOxxbKu6CQ&feature=emb_logo),[v2](https://www.youtube.com/watch?time_continue=98&v=IY88UTiJltQ&feature=emb_logo))
+  <img src ="Notes/../Pics/Logit_regression_results.png" > 
+  - if Coef. >=1 unit increase->  `np.exp(Coef.)`  
+    if Coef. < 1, unit decrease->  reciprocal `1/np.exp(Coef.)`  
 
+  - **Quantitative** Vars:
+    - For every one unit increase in x1, we expect a multiplicative change in the odds of being in the one category of $e^{b_1}$, holding all other variables constant. 
+    > For each 1 unit increase in duration, fraud is 0.23 `(np.exp(-1.46))` times as likely hodling all else constant. 
 
+     Better this version using reciprocal : 
+     > For each 1 unit decrease in duration, fraud is 4.32 `1/(np.exp(-1.46))` times as likely holding elase all else constant.
+
+  - **Categorical** Vars:
+    - When in category x1, we expect a multiplicative change in the odds of being in the one category by $e^{b_1}$ compared to the baseline. 
+    > Fraud is 12.76`(np.exp(2.54))` times as likely on weekdays than weekends hodling all else constant. 
+
+* **Model Fit**
+  - Accuracy 
+    
 
 ****
 <a id='extra'></a>
@@ -248,3 +272,59 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
 </table>
 
 *VIF $VIF_i = \frac{1}{1- R_i^2}$
+
+<a id='Lextra3'></a>
+### 3. Confusion Matrix 
+<table>
+<thead>
+  <tr>
+    <th colspan="2" rowspan="2">1</th>
+    <th colspan="2">Actual Class</th>
+    <th colspan="2">2</th>
+  </tr>
+  <tr>
+    <td>Positive</td>
+    <td>Negative</td>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="2">Predicted <br>Class</td>
+    <td>Positive</td>
+    <td>TP<br>s</td>
+    <td>FP<br>Type I error</td>
+    <td>Precision <br>TP /(TP+FP)</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Negative</td>
+    <td>FN<br>Type II error</td>
+    <td>TN<br>a</td>
+    <td>6</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td colspan="2" rowspan="2">8</td>
+    <td>Recall<br>TP/(TP+FN)</td>
+    <td>10</td>
+    <td>12</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>11</td>
+    <td>13</td>
+    <td>15</td>
+  </tr>
+</tbody>
+</table>
+
+- **Recall** / True Posotive Rate/ Sensitivity
+  how many relevent items are selected? 
+  $\frac{True\ positive}{Total\ Positive} $ = $ \frac{TP}{TP+FN}$
+  <br>
+- **Precision**/ Positive Predictive Value
+  how many selected iteams are relevent?
+  $\frac{True\ positive}{Total\ Predicted\ Positive} $ = $\frac{TP}{TP+FP}$
