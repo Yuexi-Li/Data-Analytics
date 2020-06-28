@@ -9,6 +9,7 @@
     <li><a href="#Lextra">Matrix and Numpy refresher</a></li>
     <li><a href="#Lextra2">Model assumptions and issues</a></li>
     <li><a href="#Lextra3">Confusion Matrix</a></li>
+    <li><a href="#Lextra4">ROC AUC</a></li>
     </ul>
 </ul>
 
@@ -204,8 +205,8 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
     - When in category x1, we expect a multiplicative change in the odds of being in the one category by $e^{b_1}$ compared to the baseline. 
     > Fraud is 12.76`(np.exp(2.54))` times as likely on weekdays than weekends hodling all else constant. 
 
-* **Model Fit**
-  - Accuracy 
+* **Model Fit** (check <a href="#Lextra3">Confusion Matrix</a>, and [v1](https://www.youtube.com/watch?time_continue=52&v=1Z4eorbfOOc&feature=emb_logo))
+  - <a href="#Lextra4">Accuracy: ROC AUC</a> 
     
 
 ****
@@ -291,9 +292,9 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
 </thead>
 <tbody>
   <tr>
-    <td rowspan="2">Predicted <br>Class</td>
+    <th rowspan="2">Predicted <br>Class</th>
     <td>Positive</td>
-    <td>TP<br>s</td>
+    <td>TP<br>Sensitivity</td>
     <td>FP<br>Type I error</td>
     <td>Precision <br>TP /(TP+FP)</td>
     <td>5</td>
@@ -301,14 +302,14 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
   <tr>
     <td>Negative</td>
     <td>FN<br>Type II error</td>
-    <td>TN<br>a</td>
+    <td>TN<br>Specificity</td>
     <td>6</td>
     <td>7</td>
   </tr>
   <tr>
     <td colspan="2" rowspan="2">8</td>
-    <td>Recall<br>TP/(TP+FN)</td>
-    <td>10</td>
+    <td>Recall<br>(TruePositiveRate)<br>TP/(TP+FN)</td>
+    <td>FalsePositive Rate<br>FP/(FP+TN)</td>
     <td>12</td>
     <td>14</td>
   </tr>
@@ -322,9 +323,59 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
 </table>
 
 - **Recall** / True Posotive Rate/ Sensitivity
-  how many relevent items are selected? 
+  how many correctly classified? 
   $\frac{True\ positive}{Total\ Positive} $ = $ \frac{TP}{TP+FN}$
   <br>
 - **Precision**/ Positive Predictive Value
-  how many selected iteams are relevent?
+  out of all the items labeled positive, how many truly belong to positive?
   $\frac{True\ positive}{Total\ Predicted\ Positive} $ = $\frac{TP}{TP+FP}$
+
+<a id='Lextra4'></a>
+### 4. ROC and AUC 
+Review ([Link](https://community.alteryx.com/t5/Data-Science-Blog/ROC-Curves-in-Python-and-R/ba-p/138430))
+- **ROC**
+  its comparing the rate at which classifier is making correct predictions (TP) and the rate at which the classifier is making false alarm (FP).
+  $TPR = TP/(TP+ FP)$
+  $FPR = FP/(FP+ TN)$
+- **AUC** 
+  Area under the curve.
+  AUC=0 -> BAD
+  AUC=1 -> GOOD
+  The more UP AND LEFT the hump is, the larger the AUC will be and the better the classifier. 
+
+1. Build a Modle using `scikit-learn`
+```
+from sklearn.datasets import make_classification
+from sklearn.linear_model import LogisticRegression
+
+X, y = make_classification(n_samples=10000, n_features=10, n_classes=2, n_informative=5)
+Xtrain = X[:9000]
+Xtest = X[9000:]
+ytrain = y[:9000]
+ytest = y[9000:]
+
+clf = LogisticRegression()
+clf.fit(Xtrain, ytrain)
+```
+2. Calculate ROC curve 
+```
+from sklearn import metrics
+import pandas as pd
+from ggplot import *
+
+preds = clf.predict_proba(Xtest)[:,1]
+fpr, tpr, _ = metrics.roc_curve(ytest, preds)
+
+df = pd.DataFrame(dict(fpr=fpr, tpr=tpr))
+ggplot(df, aes(x='fpr', y='tpr')) +\
+ geom_line() +\
+ geom_abline(linetype='dashed')
+```
+3. Calculate the AUC 
+```
+auc = metrics.auc(fpr,tpr)
+ggplot(df, aes(x='fpr', ymin=0, ymax='tpr')) +\
+ geom_area(alpha=0.2) +\
+ geom_line(aes(y='tpr')) +\
+ ggtitle("ROC Curve w/ AUC=%s" % str(auc))
+```
