@@ -141,7 +141,7 @@ Preview -> <a href="#Lextra">Matrix and Numpy refresher</a>
       y,X = dmatrices('price ~ intercept + area +bedrooms + bathrooms', df, return_type ='dataframe')
 
       vif = pd.DataFrame()
-      vif["VIF factor"] = [variance_inflation_factor(X.values,i) for i in range(X.shape[1])]
+      vif["VIF factor"] = [variance_inflation_fWctor(X.values,i) for i in range(X.shape[1])]
       vif["features"] = X.columns
       vif
       ```
