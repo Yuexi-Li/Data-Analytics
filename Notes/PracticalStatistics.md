@@ -179,6 +179,7 @@ table {
 &emsp;&emsp;**$pval≤α⇒ $ Reject $H_0$**: Have statistically significant evidence to sugguest ... 
 &emsp;&emsp;**$pval>α⇒$ Fail to Reject $H_0$** do not have statistically significant evidence to sugguest...
 [notebook](PvalueCalculation.html)
+[critial value blog]([PvalueCalculation.html](https://machinelearningmastery.com/critical-values-for-statistical-hypothesis-testing/))
 
 ****
 <a id='L5'></a>
@@ -200,6 +201,7 @@ table {
   - Long enough run time for the experiment to account for changes in behavior based on time of day/week or seasonal events.
   - Practical significance of a conversion rate (the cost of launching a new feature vs. the gain from the increase in conversion)
   - Consistency among test subjects in the control and experiment group (imbalance in the population represented in each group can lead to situations like Simpson's Paradox)
+
 ### AB testing case study 
 Review ( compare proportion: [wookbook](ABtest_case1.html), [explaination](https://www.youtube.com/watch?time_continue=129&v=EpfoKAwV_Eg&feature=emb_logo) ;
 &emsp;&emsp; &emsp; &emsp;compare difference in mean: [wookbook](ABtest_case2.html),[explaination](https://www.youtube.com/watch?time_continue=2&v=w6Y9ZxHDEbw&feature=emb_logo))
