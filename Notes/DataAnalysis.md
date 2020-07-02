@@ -7,7 +7,11 @@
     <li><a href="#L2.2">Access Data</a></li>
     <li><a href="#L2.3">Clean Data</a></li>
 </ul>
-<li><a href="#L4">Additional</a></li>
+<li><a href="#Lextra">Additional</a></li>
+<ul><li><a href="#Lextra_1"> System Command</a></li>
+    <li><a href="#Lextra_2">SQL connection</a></li>
+  
+</ul>
 </ul>
 
 ****
@@ -46,12 +50,38 @@ Typically approached with machine learning or inferential statistics.
 
 <a id='L2.1'></a>
 ### 1. Gather Data
-
+<a id='L4'>Userful OS command</a>
 #### Raw File
-* **HTML**
-  - workbook with bs4 ([link](GatherData_bs4.html))
-  
+* **`glob`** from file handle
+  Opening files with similar path sturcture
+  ```
+  import glob 
 
+  for file in glob.glob('subfolder/*.txt'):
+     with open(file, encoding ='utf-8' ) as file: 
+          # if wantt read only 1 line 
+          file.readline() 
+
+          # read the context 
+          review_text = file.read()
+  ```
+* **Request online**
+  ```
+  import requests 
+  import os 
+
+  folder_name = "online_content"
+  if not os.path.exists(folder_name):
+      os.makedirs(folder_name)
+
+  url = "http: xxx"
+  response = requests.get(url)
+  # can get the content inside response
+  response.content
+  ```
+
+* **read HTML**
+  - workbook with bs4 ([link](GatherData_bs4.html))
 
 
 #### Prepared Files
@@ -136,5 +166,51 @@ number of col have missing value `df.isnull().any(axis = 0).sum()`
 
 
 **** 
-<a id='L4'></a>
+<a id='Lextra'></a>
 ## Additional
+
+<a id='Lextra_1'></a>
+### 1. System Command
+1. Current working directory `pwd`
+2. List files in current dir  `os.listdir()`
+3. List files in subdir 
+   ```
+   listOfFiles = list()
+   for (dirpath, dirnames, filenames) in os.walk(subdir):
+      listOfFiles += [os.path.join(dirpath, f) for f in filenames]  
+   ```
+4. New a directory in current dir  `os.makedirs()`
+   - Make a directory if it doesn't already exist 
+  
+     ```
+     folder_name = 'ebert_reviews'
+     if not os.path.exists(folder_name):
+          os.makedirs(folder_name)
+     ``` 
+
+
+5. Full Path
+   
+6. Loop file in a folder 
+   - use `os`
+   ```
+   for file_ele in os.listdir(folder):
+      with open(os.path.join(folder, file_ele)) as file:
+          soup = BeautifulSoup(file, 'lxml') 
+   ```
+   - use `glob`
+   ```
+   import glob
+
+   for file in glob.glob('subdoler/*.txt'):
+   ```
+<a id='Lextra_2'></a>
+### 2. SQL connection 
+- SQL Alchemy
+`from sqlalchemy import create_engine` 
+create engine 
+`engine = create_engine('sqlite:///bestofrt.db')`
+store data to engine 
+`df.to_sql('master', engine, index=False)`
+Read data 
+`df_gather = pd.read_sql('SELECT * FROM master', engine)`
