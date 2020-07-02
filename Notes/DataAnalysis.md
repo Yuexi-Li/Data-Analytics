@@ -47,7 +47,6 @@ Typically approached with machine learning or inferential statistics.
 <a id='L3'></a>
 
 ## Data Wrangling: 
-
 <a id='L2.1'></a>
 ### 1. Gather Data
 <a id='L4'>Userful OS command</a>
@@ -105,8 +104,39 @@ Typically approached with machine learning or inferential statistics.
 
 <a id='L2.2'></a>
 ### 2.  Access and Build Intuition
-* **basic funtions**  &emsp;   `shape` | `dtypes` | `describe` | `info` | `unique`
-* **reassign column name** 
+![mindmap_da_assessing](Pics/mindmap_da_assessing.png)
+- **Add**
+  - `Completeness` : All the records we shoud have? 
+  - `Vality` : are the records valid? e.g conform to defined schema or not (4 digit zip code?)
+  - `Accuracy` : wrong data but valid data e.g. (10 pounds adult) 
+  - `Consistency` : valid and accurate! (for example showing NY and New york) 
+  - 
+- **Goal**
+  Detect and Document issues need to be addressed. Possible phrase:
+  > Erroneous datatype; 
+    Multiple data format in column xxx; 
+
+  
+
+* **basic funtions**  
+  `shape()` | `dtypes` | `describe()` | `info()` | `unique()` |`value_counts() ` | `sort_values()`
+
+
+<a id='L2.3'></a>
+### 3. Clean Data
+
+**Stpes** 
+1. **Define:** convert assessment into defined cleaning tasks 
+2. **Code:** convert definition to code
+3. **Test:** test the dataset (like using assert statement)
+    * **assert**
+   check if every text in a `asap_list` is in `df.startDate.values`
+   ```
+   for phrase in asap_list:
+      assert phrase not in df.startDate.values
+   ```
+  
+* **rename columns** 
   ```
   # Work from df 
   df.rename(columns ={'A' :'A1'}, inplace = True)
@@ -117,21 +147,6 @@ Typically approached with machine learning or inferential statistics.
   - check two dataframe's columns if identical 
   `(df.columns == df2.columns).all()`
 
-
-
-<a id='L2.3'></a>
-### 3. Clean Data
-
-**Stpes** 
-1. Define: convert assessment into defined cleaning tasks 
-2. Code: convert definition to code
-3. Test: test the dataset (like using assert statement)
-    * **assert**
-   check if every text in a `asap_list` is in `df.startDate.values`
-   ```
-   for phrase in asap_list:
-      assert phrase not in df.startDate.values
-   ```
 * **incorrect data types**
 `df['timestamp'] = pd.to_datetime(df['timestamp']) `
 `df[col] = df[col].astype(str/int/float)`
