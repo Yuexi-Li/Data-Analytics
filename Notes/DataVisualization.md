@@ -1,5 +1,30 @@
-## EDA (Explore and Augment)
-#### Visualizations
+# Visualizations 
+
+### Outline 
+<ul>
+<li><a href="#LIntro">Overview</a></li>
+<li><a href="#L1">Exploratory: Descriptive</a></li>
+<li><a href="#L2">Explanatory: EDA (Explore and Augment)</a></li>
+<li><a href="#L_add">Additional</a></li>
+</ul>
+
+****
+
+<a id='LIntro'></a>
+## Overview 
+**Data-ink Ratio**: 
+- The more of the ink in your visual that is related to conveying the message in the data, the better.
+
+**Lie Factor**
+- Lie factor depicts the degree to which a visualization distorts or misrepresents the data values being plotted.
+- $\displaystyle lie \ factor = \frac{\Delta visual / visual_{start}}{\Delta data / data_{start}}$
+- If lie factor is greater than 1, then it sugguest the visual is misleading. 
+****
+<a id='L1'></a>
+## Exploration visulizations
+  *OR Descriptive visuals*
+
+
 * **descriptive**
   Quick insight into the relationships among numerical variables with scatter plots and display histogram for each variable
   `pd.plotting.scatter_matrix(df, figsize = (10,15))`
@@ -27,5 +52,18 @@
   sns.heatmap(corrMatrix, annot = True)
   plt.show()
   ``` 
+
+
+****
+<a id='L2'></a>
+## Explanatory Visualizations
+  *OR EDA explore and Augment visuals*
+
+
+
+
+****
+<a id=L_add>
+## Additional
 * **Charts selection** 
   ![Chart](Pics/new_chart.jpeg) 
