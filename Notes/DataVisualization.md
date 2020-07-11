@@ -19,11 +19,56 @@
 - Lie factor depicts the degree to which a visualization distorts or misrepresents the data values being plotted.
 - $\displaystyle lie \ factor = \frac{\Delta visual / visual_{start}}{\Delta data / data_{start}}$
 - If lie factor is greater than 1, then it sugguest the visual is misleading. 
+
+### Figures, Axes and Subplots
+
 ****
 <a id='L1'></a>
 ## Exploration visulizations
   *OR Descriptive visuals*
 
+
+### Univariate  [link](DataVisuals/Univariate.html)
+![picture](DataVisuals/Mindmap/mindmap_unvariate.png)
+
+* **Count plot**
+  ![countplot](./DataVisuals/Pics/count_plot.png)
+### Bivariate
+
+* **Scatter plot**
+  -  Show correlation 
+  -  `plt.scatter (data = df, x =, y= )`
+  -  `sns.regplot(data = df, x =, y= )`
+
+* **Heat Maps**
+  -  Show relationship of 2 discret variables 
+  -  `plt.hist2d(data = df, x= , y= )`
+     -  `cmin`
+        bins with no counts will return not a number then not colored
+     -  `cmap` = 
+        color with `_r` which means reversed color map for example = `'viridis_r'`
+     -  `bins = [binx, biny]`
+
+* **Overplotting Issue**
+  ![](./DataVisuals/Pics/overlappingissue.png)
+  - [Overplotting](https://www.youtube.com/watch?time_continue=153&v=BGqR-nxgMtg&feature=emb_logo) : high amount of overlap in points makes it difficult to see the actual relationship between the plotted variables. 
+  - Solve:
+    - Sampling 
+    - Transparency 
+      - adding alpha so that the more points show darker image 
+      -  `plt.scatter(data = df, x = 'disc_var1', y = 'disc_var2', alpha = 1/5)`
+    - Jitter
+      - move the position of each point slightly from its true value. 
+      - each point to be plotted in a uniform +- 0.2 range of their true value 
+       ```
+        sns.regplot(\
+            data = df, x = 'var1', y = 'var2', \
+            fit_reg = False,
+            x_jitter = 0.2, y_jitter = 0.2,\
+            scatter_kws = {'alpha' : 1/3})
+        ```
+  
+### Multivariate
 
 * **descriptive**
   Quick insight into the relationships among numerical variables with scatter plots and display histogram for each variable
