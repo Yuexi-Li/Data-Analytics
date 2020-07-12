@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@5"></script><script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.11/dist/browser/view.min.js"></script><script>((t,a,e,n)=>{const{Markmap:o,loadPlugins:s}=window.markmap;(a?a(s,e,n):Promise.resolve()).then(()=>{o.create("svg#mindmap",null,t)})})({"t":"root","d":0,"v":"","c":[{"t":"heading","d":1,"v":"Univariate","c":[{"t":"heading","d":2,"v":"Histogram","c":[{"t":"list_item","d":3,"v":"Quant."}]},{"t":"heading","d":2,"v":"Bar chart","c":[{"t":"list_item","d":3,"v":"Qual."}]},{"t":"heading","d":2,"v":"Pie/donut chart","c":[{"t":"list_item","d":3,"v":"Qual.  with limitations"}]}]},{"t":"heading","d":1,"v":"Bivariates","c":[{"t":"heading","d":2,"v":"Scatterplots","c":[{"t":"list_item","d":3,"v":"Quant. vs Quant."}]},{"t":"heading","d":2,"v":"Violin/Box plots","c":[{"t":"list_item","d":3,"v":"Quant. vs Qual."}]},{"t":"heading","d":2,"v":"Clustered bar charts","c":[{"t":"list_item","d":3,"v":"Qual. vs Qual."}]}]},{"t":"heading","d":1,"v":"Multivariate","c":[{"t":"heading","d":2,"v":"Encoding","c":[{"t":"heading","d":3,"v":"Positional","c":[{"t":"list_item","d":4,"v":"Shape (norminal)"},{"t":"list_item","d":4,"v":"Size (numeric)"}]},{"t":"heading","d":3,"v":"Non-Positional","c":[{"t":"heading","d":4,"v":"Color","c":[{"t":"list_item","d":5,"v":"Quualitative Palette"},{"t":"list_item","d":5,"v":"Sequential Palette"},{"t":"list_item","d":5,"v":"Diverging Palette"}]}]}]},{"t":"heading","d":2,"v":"Faceting"},{"t":"heading","d":2,"v":"Plot Matrices","c":[{"t":"heading","d":3,"v":"correlation matrices"},{"t":"heading","d":3,"v":"heatmap"}]}]}]})</script>
+</body>
+</html>
