@@ -9,7 +9,7 @@
 </ul>
 
 ****
-
+![picture](DataVisuals/Mindmap/mindmap_summary.png)
 <a id='LIntro'></a>
 ## Overview 
 **Data-ink Ratio**: 
@@ -20,7 +20,6 @@
 - $\displaystyle lie \ factor = \frac{\Delta visual / visual_{start}}{\Delta data / data_{start}}$
 - If lie factor is greater than 1, then it sugguest the visual is misleading. 
 
-### Figures, Axes and Subplots
 
 ****
 <a id='L1'></a>
@@ -34,6 +33,7 @@
 * **Count plot**
   ![countplot](./DataVisuals/Pics/count_plot.png)
 ### Bivariate
+![Pic](./DataVisuals/Mindmap/mindmap_bivariate.png)
 
 * **Scatter plot**
   -  Show correlation 
@@ -69,6 +69,29 @@
         ```
   
 ### Multivariate
+- Encoding for third variables 
+  - positional 
+    - Size 
+    - Shape 
+  - non positional
+    - color 
+      1. **Qualitative** (all up to 6 colors): `'deep', 'pastel', 'dark', 'muted', 'bright', 'colorblind'`
+      2. **Sequential:** `'rocket'` (white-orange-red-purple-black), `'mako'` (mint-green-blue-purple-black)
+      3. **Diverging:** `'vlag'` (blue-white-red), `'icefire'` (blue-black-orange)
+- Faceting 
+****
+<a id='L2'></a>
+## Explanatory Visualizations
+  *OR EDA explore and Augment visuals*
+
+
+
+
+****
+<a id=L_add></a>
+## Additional
+* **Charts selection** 
+  ![Chart](Pics/new_chart.jpeg) 
 
 * **descriptive**
   Quick insight into the relationships among numerical variables with scatter plots and display histogram for each variable
@@ -96,19 +119,3 @@
   corrMatrix = df.loc[:,['col','col2']].corr()
   sns.heatmap(corrMatrix, annot = True)
   plt.show()
-  ``` 
-
-
-****
-<a id='L2'></a>
-## Explanatory Visualizations
-  *OR EDA explore and Augment visuals*
-
-
-
-
-****
-<a id=L_add>
-## Additional
-* **Charts selection** 
-  ![Chart](Pics/new_chart.jpeg) 
