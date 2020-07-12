@@ -82,11 +82,37 @@
 ****
 <a id='L2'></a>
 ## Explanatory Visualizations
-  *OR EDA explore and Augment visuals*
+Are primaryily about conveying a message or story. They should grab reader's attention, and clearly convey a messgae that conveys a specific feeling or a call to action. 
 
+### Story telling 
+**Steps:**
+1. Start with a Question
+2. Repetition is a Good Thing
+3. Highlight the Answer
+4. Call Your Audience To Action
 
+**Checklist:**
+- appropriate plot type and encodings 
+- good design integrity (data-ink ratio, lie-factor, no chart junk)
+- labeled axes, reasonable tick marks 
+- descriptive legends and title
+- provide title and comments (title for whole, `subtitle` for subplotting)
 
+**Slide Deck**
+- Setting: 
+  - Markdown cell
+    - Slide Type = `Slide` main flow of the slide deck 
+  - Code Cell 
+    - code process = `Skip`
+    - code generate visuals =`subslide`
 
+- Convert: 
+  - To terminal 
+    `$ jupyter nbconvert presentation.ipynb --to slides`
+  - If we want to hide the code to visuals as well
+    add this [file](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/March/5abe98f3_output-toggle/output-toggle.tpl) to the same directory 
+    Then : `jupyter nbconvert presentation.ipynb --to slides --template output-toggle.tpl
+--post serve`
 ****
 <a id=L_add></a>
 ## Additional
