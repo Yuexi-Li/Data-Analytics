@@ -1,0 +1,2 @@
+In this project, we will conduct an exploratory data analysis on `Ford GoBike System` Data. This project is started from data wrangling (data gathering, asessing, and cleaning) through exploratory visualizations, including univariate up to multivariate visualizations.  
+Then, we will take the main findings from this exploration work and estabilish a slide deck in explanatory analysis. 
