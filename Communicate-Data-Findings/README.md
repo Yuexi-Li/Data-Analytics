@@ -62,30 +62,58 @@ import calendar
 <a id ='T3_1'></a>
 **How long are people riding these bikes?** 
 
-<img src="/Communicate-Data-Findings/Pics/d1.png">
+<img src="/Communicate-Data-Findings/Pics/p1.png">
 In this analysis we'd like to see the distribution of people riding bikes in secs. Since the distribution is right skewed here we set the top limit of 2200 secs to remove some outliers with extremely long riding time.
 We can see tha the peak usesage falls in 250-740 secs which is around 4.5mins, so generally speaking, people like to use gobike for short routes.
 
 <p>
 
-**How long are people riding these bikes?** 
-<img src="/Communicate-Data-Findings/Pics/d2.png">
+**What would be the distribution looks like if we use the log transformation?** 
+<img src="/Communicate-Data-Findings/Pics/p2.png">
+From this log transformed plot, we can see that the duration of rides looks normal distribution with most of the rides fall under (350-1000 secs) which is reasonable for short distance ride.
+
+<p>
+
+**Where are top 15 places people like to take a ride?** 
+<img src="/Communicate-Data-Findings/Pics/p3.png">
+Its unexpectly to see that many of start places are around Station (Caltrain, Bart Station). This finding isnt really surprising so lets see what are the proportion of commute ride (either start place or end place is station)..
+
+<p>
+
+**The proportion of Commute Rides? Any specific public transportation related to those commute rides?** 
+<img src="/Communicate-Data-Findings/Pics/p4.png"> 
+Now we can see that, nearly 30% of the rides are communite rides related, and within these commute rides, people like to take ride to or out from Bart station.
+
+<p>
+
+**When are most trips taken in terms of day of the week?** 
+<img src="/Communicate-Data-Findings/Pics/p5.png"> 
 We can see from the plot that Tuesday to Friday has the most trips taken, followed by Monday and Friday. Trips in Saturday and Sunday are approximately half of the rides than in weekdays.
 
 <p>
 
 **When are most trips taken in terms of time of the day?** 
-<img src="/Communicate-Data-Findings/Pics/d3.png">
+<img src="/Communicate-Data-Findings/Pics/p6.png"> 
 The most frequent starting hours are at commute peak time 8 and at 17. Lets see if this pattern is specially for weekday.
 
 <p>
 
-**Most Ride in time of day and week of day** 
-<img src="/Communicate-Data-Findings/Pics/d4.png"> 
-We can see that oveall people turns to take rides more on Weekday commute time (16-20pm and 8:12am). This pattern is not that obvious during weekend.
-
+**Are there any peak time of rides in terms day of the week and hours of the day?** 
+<img src="/Communicate-Data-Findings/Pics/p7.png"> 
+We can see that oveall people turns to take rides more on Weekday commute time (16-20pm and 8:12am). This pattern is not that obvious during weekend..
 <p>
 
-**Does user have different ride habit of in case of the riding duration in different month?** 
-<img src="/Communicate-Data-Findings/Pics/d5.png"> 
-We can see that most compared to non-subscribed customer group, the subscribed customer group turns to have ride in slight difference of each day of week and the average ride time is lower.
+
+**Can we find any interesting riding behaviours between Customer and Subscriber?** 
+<img src="/Communicate-Data-Findings/Pics/p8.png"> 
+We can see that most compared to non-subscribed customer group, the subscribed customer group turns to have ride in slight difference of each day of week and the average ride time is lower..
+<p>
+
+**Can we find any patterns in terms of month?** 
+<img src="/Communicate-Data-Findings/Pics/p9.png"> 
+We can see that for the subscriber, the the average ride time is more stable over time while the people turn to ride less on certain months, this may due to the weather issue.
+<p>
+
+**Can we find similar patterns in terms of Routes Type (Commute/normal)?** 
+<img src="/Communicate-Data-Findings/Pics/p10.png"> 
+This is really unexpected. We found in previous Bivariate visualization analysis that people who take communite ride has an overall more standard duration of ride while if we look this graph by month over month, we found it fluctures a lot. So we may conclude that user type is more important issue to predict the average durcation of rides..
