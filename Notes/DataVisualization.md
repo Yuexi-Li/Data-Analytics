@@ -1,6 +1,8 @@
 # Visualizations 
 
 ### Outline 
+[Workboook](DataVisuals/Data_visual.html)
+[CaseStudy]()
 <ul>
 <li><a href="#LIntro">Overview</a></li>
 <li><a href="#L1">Exploratory: Descriptive</a></li>
