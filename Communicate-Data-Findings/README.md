@@ -116,4 +116,9 @@ We can see that for the subscriber, the the average ride time is more stable ove
 
 **Can we find similar patterns in terms of Routes Type (Commute/normal)?** 
 <img src="/Communicate-Data-Findings/Pics/p10.png"> 
-This is really unexpected. We found in previous Bivariate visualization analysis that people who take communite ride has an overall more standard duration of ride while if we look this graph by month over month, we found it fluctures a lot. So we may conclude that user type is more important issue to predict the average durcation of rides..
+This is really unexpected. We found in previous Bivariate visualization analysis that people who take communite ride has an overall more standard duration of ride while if we look this graph by month over month, we found it fluctures a lot. So we may conclude that user type is more important issue to predict the average durcation of rides.
+
+<p>
+
+**Map version of station** [link](https://kepler.gl/demo)
+<img src="/Communicate-Data-Findings/Pics/geopic.png"> 

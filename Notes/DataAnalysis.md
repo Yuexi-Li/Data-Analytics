@@ -185,9 +185,10 @@ number of col have missing value `df.isnull().any(axis = 0).sum()`
      - Zip code pad to 5 digit 
         `df.zip_code.astype(str).str.pad(5,fillchar='0')` 
 * **duplicates** 
-`df.duplicated()` gives boolean result 
-`sum(df.duplicates())` gives the number of duplicates records 
-`df.drop_duplicates()`
+  - `df.duplicated()` gives boolean result 
+  - `sum(df.duplicates())` gives the number of duplicates records 
+  - `df.drop_duplicates()`
+  - `df[df.duplicated("col", keep= False)]` to show all the duplicated information by col; if `keep= True` then only show de-duplicated df
 
 * **`query`**: 
   - selected rows by indexing with a mask
