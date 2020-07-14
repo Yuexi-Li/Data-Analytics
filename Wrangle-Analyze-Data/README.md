@@ -24,8 +24,9 @@ This project aims to use Twitter data to create interesting and trustworthy anal
 <a id='Intro'></a>
 ## Part I: Introduction
 <a id='Datasource'></a>
-### 1. Data Sources
-1. `twitter_archive_enhanced.csv`:   
+
+### 1. Data Sources   
+1. `twitter_archive_enhanced.csv`:    
 The WeRateDogs Twitter archive [twitter_archive_enhanced.csv](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59a4e958_twitter-archive-enhanced/twitter-archive-enhanced.csv)
 
 2. `image_predictions.tsv`:  
