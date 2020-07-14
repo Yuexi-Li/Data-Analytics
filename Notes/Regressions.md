@@ -379,3 +379,6 @@ ggplot(df, aes(x='fpr', ymin=0, ymax='tpr')) +\
  geom_line(aes(y='tpr')) +\
  ggtitle("ROC Curve w/ AUC=%s" % str(auc))
 ```
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
