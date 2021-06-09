@@ -50,6 +50,8 @@ This repository contains projects of the [Data Analyst Program](https://www.udac
 </tbody>
 </table>
 
+![](DataAnalystCertificate.png)
+
 ## Notes: 
 - [Data Analysis](./Notes/DataAnalysis.md)
 - [Practical Statistics](./Notes/PracticalStatistics.md)
